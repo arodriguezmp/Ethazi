@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class erreserba {
+public class Erreserba implements Bez{
 	private int prezioa;
 	private Date hasiera_data;
 	private Date amaiera_data;
 	private String nan;
 	private String kod_ostatua;
 
-	public erreserba() {
+	public Erreserba() {
 		this.prezioa = 0;
 		this.hasiera_data = new Date();
 		this.amaiera_data = new Date();
@@ -20,7 +20,7 @@ public class erreserba {
 		this.kod_ostatua = "";
 	}
 
-	public erreserba(int a, Date b, Date c, String d, String e) {
+	public Erreserba(int a, Date b, Date c, String d, String e) {
 		this.prezioa = a;
 		this.hasiera_data = b;
 		this.amaiera_data = c;

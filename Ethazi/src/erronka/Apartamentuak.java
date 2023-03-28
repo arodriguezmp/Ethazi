@@ -2,25 +2,25 @@ package erronka;
 
 import java.util.Scanner;
 
-public class apartamentuak extends Ostatuak{
+public class Apartamentuak extends Ostatuak{
 
 	private int kommun_kop;
 	private int logela_kop;
 	
 	
-	public apartamentuak() {
+	public Apartamentuak() {
 		super();
 		this.kommun_kop=0;
 		this.logela_kop=0;
 	}
 	
-	public apartamentuak(int ko , int pk , int kk , int lk) {
+	public Apartamentuak(int ko , int pk , int kk , int lk) {
 		super(ko , pk);
 		this.kommun_kop=kk;
 		this.logela_kop=lk;
 	}
 	
-	public apartamentuak(apartamentuak a) {
+	public Apartamentuak(Apartamentuak a) {
 		super(a);
 		this.kommun_kop=a.kommun_kop;
 		this.logela_kop=a.logela_kop;
