@@ -76,9 +76,10 @@ public class erreserba {
 
 	public void pantailaratu() {
 		// TODO Auto-generated method stub
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
 		System.out.println("Prezioa: " + this.prezioa);
-		System.out.println("Hasiera Data: " + this.hasiera_data	);
-		System.out.println("Amaiera Data: " + this.amaiera_data);
+		System.out.println("Hasiera Data: " + dt.format(hasiera_data));
+		System.out.println("Amaiera Data: " + dt.format(amaiera_data));
 		System.out.println("NAN zenbakia: " + this.nan);
 		System.out.println("Kodea: " + this.kod_ostatua);
 
