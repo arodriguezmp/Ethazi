@@ -20,6 +20,12 @@ public class Apartamentuak extends Ostatuak{
 		this.logela_kop=lk;
 	}
 	
+	public Apartamentuak(int ko, int kk, int lk) {
+		super(ko);
+		this.kommun_kop=kk;
+		this.logela_kop=lk;
+	}
+	
 	public Apartamentuak(Apartamentuak a) {
 		super(a);
 		this.kommun_kop=a.kommun_kop;

@@ -23,6 +23,13 @@ public class Kruzeroak extends Ostatuak{
 		this.kamarote_mota=km;
 	}
 	
+	public Kruzeroak(int ko, int kz, String k, String km) {
+		super(ko);
+		this.kamarote_zenb=kz;
+		this.klasea=k;
+		this.kamarote_mota=km;
+	}
+	
 	public Kruzeroak(Kruzeroak k) {
 		super(k);
 		this.kamarote_zenb=k.kamarote_zenb;

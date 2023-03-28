@@ -10,22 +10,30 @@ public class Erreserba implements Bez{
 	private Date hasiera_data;
 	private Date amaiera_data;
 	private String nan;
-	private String kod_ostatua;
+	private int kod_ostatua;
 
 	public Erreserba() {
-		this.prezioa = 0;
+		this.nan = "";
+		this.kod_ostatua = 0;
 		this.hasiera_data = new Date();
 		this.amaiera_data = new Date();
-		this.nan = "";
-		this.kod_ostatua = "";
+		this.prezioa = 0;
 	}
 
-	public Erreserba(int a, Date b, Date c, String d, String e) {
-		this.prezioa = a;
-		this.hasiera_data = b;
-		this.amaiera_data = c;
-		this.nan = d;
-		this.kod_ostatua = e;
+	public Erreserba(int p, Date hd, Date ad, String n, int ko) {
+		this.prezioa = p;
+		this.hasiera_data = hd;
+		this.amaiera_data = ad;
+		this.nan = n;
+		this.kod_ostatua = ko;
+	}
+	
+	public Erreserba(String n, int ko, Date hd, Date ad, int p) {
+		this.nan=n;
+		this.kod_ostatua=ko;
+		this.hasiera_data=hd;
+		this.amaiera_data=ad;
+		this.prezioa=p;
 	}
 
 	public int getPrezioa() {
@@ -60,11 +68,11 @@ public class Erreserba implements Bez{
 		this.nan = nan;
 	}
 
-	public String getKod_ostatua() {
+	public int getKod_ostatua() {
 		return kod_ostatua;
 	}
 
-	public void setKod_ostatua(String kod_ostatua) {
+	public void setKod_ostatua(int kod_ostatua) {
 		this.kod_ostatua = kod_ostatua;
 	}
 
@@ -77,13 +85,11 @@ public class Erreserba implements Bez{
 	public void pantailaratu() {
 		// TODO Auto-generated method stub
 		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println("Prezioa: " + this.prezioa);
+		System.out.println("Bezeroaren NAN zenbakia: " + this.nan);
+		System.out.println("Ostatu kodea: " + this.kod_ostatua);
 		System.out.println("Hasiera Data: " + dt.format(hasiera_data));
 		System.out.println("Amaiera Data: " + dt.format(amaiera_data));
-		System.out.println("NAN zenbakia: " + this.nan);
-		System.out.println("Kodea: " + this.kod_ostatua);
-
-
+		System.out.println("Prezioa: " + this.prezioa+" €");
 	}
 
 	public void irakurri(Scanner teclado) {
@@ -92,9 +98,8 @@ public class Erreserba implements Bez{
 		this.prezioa = teclado.nextInt();
 		System.out.println("Sartu NAN:");
 		this.nan = teclado.next();
-	
-
-
+		System.out.println("Sartu Erreserbatu nahi duzun ostatuaren kodea:");
+		this.kod_ostatua=teclado.nextInt();
 		try {
 			System.out.println("Sartu Hasiera data:");
 			this.hasiera_data = new SimpleDateFormat("dd/MM/yyyy").parse(teclado.next());
@@ -105,11 +110,6 @@ public class Erreserba implements Bez{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		System.out.println("Sartu email:");
-		this.nan = teclado.next();
-		System.out.println("Sartu bezero zenbakia:");
-		this.kod_ostatua = teclado.next();
 	}
 
 }

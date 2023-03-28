@@ -14,11 +14,16 @@ public class Langileak extends Pertsonak implements Serializable {
 
 	}
 
-	public Langileak(String a, String b, String c, String d, String e, String f, String g) {
-		super(a, b, c, d, e);
-		this.admin = f;
-		this.lan_postua = g;
-
+	public Langileak(String n, String i, String a, String t, String e, String ad, String lp) {
+		super(n, i, a, t, e);
+		this.admin = ad;
+		this.lan_postua = lp;
+	}
+	
+	public Langileak(String n, String ad, String lp) {
+		super(n);
+		this.admin = ad;
+		this.lan_postua = lp;
 	}
 
 	@Override

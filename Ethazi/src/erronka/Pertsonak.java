@@ -18,13 +18,16 @@ public abstract class Pertsonak {
 
 	}
 
-	public Pertsonak(String a, String b, String c, String d, String e) {
-		this.nan = a;
-		this.izena = b;
-		this.abizena = c;
-		this.tfno = d;
+	public Pertsonak(String n, String i, String a, String t, String e) {
+		this.nan = n;
+		this.izena = i;
+		this.abizena = a;
+		this.tfno = t;
 		this.email = e;
-
+	}
+	
+	public Pertsonak(String n) {
+		this.nan=n;
 	}
 
 	public abstract void pantailaratu();

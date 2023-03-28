@@ -11,10 +11,14 @@ public class Bezeroak extends Pertsonak {
 
 	}
 
-	public Bezeroak(String a, String b, String c, String d, String e, int f) {
-		super(a, b, c, d, e);
-		this.bezero_zbk = f;
-
+	public Bezeroak(String n, String i, String a, String t, String e, int bz) {
+		super(n, i, a, t, e);
+		this.bezero_zbk = bz;
+	}
+	
+	public Bezeroak(String a, int f) {
+		super(a);
+		this.bezero_zbk=f;
 	}
 
 	@Override

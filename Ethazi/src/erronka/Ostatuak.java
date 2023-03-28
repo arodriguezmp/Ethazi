@@ -17,6 +17,10 @@ public class Ostatuak {
 		this.pertsona_kop=pk;
 	}
 	
+	public Ostatuak(int ko) {
+		this.kod_ostatua=ko;
+	}
+	
 	public Ostatuak(Ostatuak o) {
 		this.kod_ostatua=o.kod_ostatua;
 		this.pertsona_kop=o.pertsona_kop;
