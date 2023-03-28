@@ -139,9 +139,8 @@ public class MainAgentzia {
 					amaiera_data = dt.format(ad);
 
 					consulta = "INSERT INTO erreserbak VALUES ('" + nan + "'," + kod_ostatua + ",'" + hasiera_data
-							+ "','" + amaiera_data + "'," + prezioa + ";";
-					System.out.println(consulta);
-					//st.executeUpdate(consulta);
+							+ "','" + amaiera_data + "'," + prezioa + ");";
+					st.executeUpdate(consulta);
 				}
 			}
 		} catch (SQLException sqle) {
