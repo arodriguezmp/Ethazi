@@ -34,7 +34,7 @@ public class Langileak extends Pertsonak implements Serializable {
 		System.out.println("Abizena: " + this.abizena);
 		System.out.println("Telefonoa: " + this.tfno);
 		System.out.println("Email: " + this.email);
-		System.out.println("xxx " + this.admin);
+		System.out.println("Admin: " + this.admin);
 		System.out.println("Lan postua: " + this.lan_postua);
 	}
 	

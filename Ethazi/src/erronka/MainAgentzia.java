@@ -23,7 +23,8 @@ public class MainAgentzia {
 		ArrayList<Kruzeroak> k = new ArrayList<Kruzeroak>();
 		int menu;
 		boolean erreserbaldaketak = false;
-
+		
+		//scanner
 		Scanner sc = new Scanner(System.in);
 
 		// Datu basearekin konexioa
