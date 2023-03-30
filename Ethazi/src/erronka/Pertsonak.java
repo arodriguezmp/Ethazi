@@ -18,12 +18,12 @@ public abstract class Pertsonak {
 
 	}
 
-	public Pertsonak(String n, String i, String a, String t, String e) {
+	public Pertsonak(String n, String i, String a, String e, String t) {
 		this.nan = n;
 		this.izena = i;
 		this.abizena = a;
-		this.tfno = t;
 		this.email = e;
+		this.tfno = t;
 	}
 	
 	public Pertsonak(String n) {

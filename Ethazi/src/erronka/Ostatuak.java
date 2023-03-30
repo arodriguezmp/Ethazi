@@ -17,9 +17,7 @@ public class Ostatuak {
 		this.pertsona_kop=pk;
 	}
 	
-	public Ostatuak(int ko) {
-		this.kod_ostatua=ko;
-	}
+
 	
 	public Ostatuak(Ostatuak o) {
 		this.kod_ostatua=o.kod_ostatua;
@@ -48,13 +46,14 @@ public class Ostatuak {
 	}
 	
 	public void pantailaratu(){
-		System.out.println( kod_ostatua + "," + pertsona_kop);
+		System.out.println("Ostatu kodea: "+ this.kod_ostatua);
+		System.out.println("Gehienezko pertsona kopurua: "+ this.pertsona_kop);
 	}
 	
 	public void irakurri(Scanner teklatua) {
 		System.out.println("Sartu ostatuaren kodea:");
 		this.kod_ostatua =teklatua.nextInt();
-		System.out.println("Sartu pertsona kopurua:");
+		System.out.println("Sartu pertsona maximo kopurua:");
 		this.pertsona_kop =teklatua.nextInt();
 	}
 }

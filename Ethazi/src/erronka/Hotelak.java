@@ -18,12 +18,6 @@ public class Hotelak extends Ostatuak {
 		this.gela_mota = gm;
 		this.gela_zenbakia = gz;
 	}
-	
-	public Hotelak(int ko, String gm, int gz) {
-		super(ko);
-		this.gela_mota = gm;
-		this.gela_zenbakia = gz;
-	}
 
 	public Hotelak(Hotelak h) {
 		super(h);
@@ -53,10 +47,13 @@ public class Hotelak extends Ostatuak {
 	}
 
 	public void pantailaratu() {
-		System.out.println(kod_ostatua + "," + pertsona_kop + "," + gela_mota + "," + gela_zenbakia);
+		super.pantailaratu();
+		System.out.println("Gelaren mota: "+ this.gela_mota);
+		System.out.println("Gelaren zenbakia: "+ this.gela_zenbakia);
 	}
 
 	public void irakurri(Scanner teklatua) {
+		super.irakurri(teklatua);
 		System.out.println("Sartu gela mota:");
 		this.gela_mota = teklatua.next();
 		System.out.println("Sartu gela zenbakia:");

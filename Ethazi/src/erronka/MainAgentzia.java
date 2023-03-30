@@ -23,8 +23,14 @@ public class MainAgentzia {
 		ArrayList<Kruzeroak> k = new ArrayList<Kruzeroak>();
 		int menu;
 		boolean erreserbaldaketak = false;
-		
-		//scanner
+		boolean admin=false;
+		boolean bezero=true;
+		String dni;
+		boolean encontrado=false;
+		int kont=0;
+		String erabilsortu;
+
+		// scanner
 		Scanner sc = new Scanner(System.in);
 
 		// Datu basearekin konexioa
@@ -34,22 +40,25 @@ public class MainAgentzia {
 			System.out.println("Conexión Correcta.");
 			// Consulta
 			Statement st = conexion.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM agentzia.apartamentuak;");
+			ResultSet rs = st.executeQuery(
+					"SELECT * FROM agentzia.apartamentuak a, agentzia.ostatuak o WHERE a.kod_ostatua=o.kod_ostatua;");
 			while (rs.next()) {
-				Apartamentuak a1 = new Apartamentuak(rs.getInt("kod_ostatua"), rs.getInt("komun_kop"),
-						rs.getInt("logela_kop"));
+				Apartamentuak a1 = new Apartamentuak(rs.getInt("kod_ostatua"), rs.getInt("pertsona_kop_max"),
+						rs.getInt("komun_kop"), rs.getInt("logela_kop"));
 				a.add(a1);
 			}
 
-			rs = st.executeQuery("SELECT * FROM agentzia.bezeroak;");
+			rs = st.executeQuery("SELECT * FROM agentzia.bezeroak b, agentzia.pertsonak p WHERE b.nan=p.nan;");
 			while (rs.next()) {
-				Bezeroak b1 = new Bezeroak(rs.getString("nan"), rs.getInt("bezero_zbk"));
+				Bezeroak b1 = new Bezeroak(rs.getString("nan"), rs.getString("izena"), rs.getString("abizena"),
+						rs.getString("email"), rs.getString("tfno"), rs.getInt("bezero_zbk"));
 				b.add(b1);
 			}
 
-			rs = st.executeQuery("SELECT * FROM agentzia.langileak;");
+			rs = st.executeQuery("SELECT * FROM agentzia.langileak l, agentzia.pertsonak p WHERE l.nan=p.nan;");
 			while (rs.next()) {
-				Langileak l1 = new Langileak(rs.getString("nan"), rs.getString("admin"), rs.getString("lan_postua"));
+				Langileak l1 = new Langileak(rs.getString("nan"), rs.getString("izena"), rs.getString("abizena"),
+						rs.getString("email"), rs.getString("tfno"), rs.getString("admin"), rs.getString("lan_postua"));
 				l.add(l1);
 			}
 
@@ -60,9 +69,10 @@ public class MainAgentzia {
 				e.add(e1);
 			}
 
-			rs = st.executeQuery("SELECT * FROM agentzia.hotelak;");
+			rs = st.executeQuery("SELECT * FROM agentzia.hotelak h, agentzia.ostatuak o WHERE h.kod_ostatua=o.kod_ostatua;");
 			while (rs.next()) {
-				Hotelak h1 = new Hotelak(rs.getInt("kod_ostatua"), rs.getString("gela_mota"), rs.getInt("gela_zenb"));
+				Hotelak h1 = new Hotelak(rs.getInt("kod_ostatua"), rs.getInt("pertsona_kop_max"),
+						rs.getString("gela_mota"), rs.getInt("gela_zenb"));
 				h.add(h1);
 			}
 
@@ -72,10 +82,10 @@ public class MainAgentzia {
 				o.add(o1);
 			}
 
-			rs = st.executeQuery("SELECT * FROM agentzia.kruzeroak;");
+			rs = st.executeQuery("SELECT * FROM agentzia.kruzeroak k, agentzia.ostatuak o WHERE o.kod_ostatua=k.kod_ostatua;");
 			while (rs.next()) {
-				Kruzeroak k1 = new Kruzeroak(rs.getInt("kod_ostatua"), rs.getInt("kamarote_zenb"),
-						rs.getString("klasea"), rs.getString("kamarote_mota"));
+				Kruzeroak k1 = new Kruzeroak(rs.getInt("kod_ostatua"), rs.getInt("pertsona_kop_max"),
+						rs.getInt("kamarote_zenb"), rs.getString("klasea"), rs.getString("kamarote_mota"));
 				k.add(k1);
 			}
 			// ResultSet itxi
@@ -89,28 +99,148 @@ public class MainAgentzia {
 			sqle.printStackTrace();
 			System.out.println("Error de Conexión");
 		}
-
-		do {
-			System.out.println("1- Erreserbak bistaratu");
-			System.out.println("8- Erreserba bat gehitu");
-			System.out.println("0- Irten");
-			menu = sc.nextInt();
-			switch (menu) {
-			case 1:
-				for (Erreserba i : e) {
-					i.pantailaratu();
-					System.out.println("***************************");
+		
+		//Saioa hasi
+		System.out.println("Sartu erabiltzailea (NAN zenbakia):");
+		dni=sc.next();
+		while (encontrado==false && kont<b.size()){
+			
+			if (dni.equalsIgnoreCase(b.get(kont).getNan()) || dni.equalsIgnoreCase(l.get(kont).getNan())) {
+				encontrado=true;
+				if (dni.equalsIgnoreCase(l.get(kont).getNan())) {
+					admin=true;
+					bezero=false;
 				}
-				break;
-
-			case 8:
-				Erreserba e2 = new Erreserba();
-				e2.irakurri(sc);
-				e.add(e2);
-				erreserbaldaketak = true;
 			}
+			else {
+				kont++;
+			}
+		}
+		
+		/*
+		if (encontrado==false) {
+			System.out.println("Erabiltzaile hori ez da existitzen.");
+			System.out.println("Kontu berria sortu nahi duzu? (BAI/EZ)");
+			erabilsortu=sc.next();
+			while (!erabilsortu.equalsIgnoreCase("ez") && !erabilsortu.equalsIgnoreCase("bai")) {
+				System.out.println("ERROR! BAI edo EZ bakarrik!");
+				erabilsortu=sc.next();
+			}
+			if (erabilsortu.equalsIgnoreCase("ez")) {
+				
+			}
+			else {
+				kont=0;
+				encontrado=false;
+				while (encontrado==false && kont<b.size()) {
+					if(dni.equalsIgnoreCase(b.get(kont).getNan())) {
+						encontrado=true;
+					}
+					else {
+						kont++;
+					}
+				}
+				Bezeroak b1 = new Bezeroak();
+				b1.irakurri(sc);
+			}
+		}
+		*/
+		
+		
+		
+		if (admin==true) {
+			System.out.println("Administrari menua");
+			do {
+				System.out.println("1- Erreserbak bistaratu");
+				System.out.println("2- Bezeroak bistaratu");
+				System.out.println("3- Langileak bistaratu");
+				System.out.println("4- Ostatuak bistaratu");
+				System.out.println("5- Kruzeroak bistaratu");
+				System.out.println("6- Apartamantuak bistaratu");
+				System.out.println("7- Hotelak bistaratu");
+				System.out.println("8- Erreserba bat gehitu");
+				System.out.println("9- ");
+				System.out.println("10- ");
+				System.out.println("11- ");
+				System.out.println("12- ");
+				System.out.println("13- ");
+				System.out.println("14- ");
+				System.out.println("15- ");
+				System.out.println("0- Irten");
+				menu = sc.nextInt();
+				switch (menu) {
+				case 1:
+					System.out.println("************Erreserbak bistaratu************");
+					for (Erreserba i : e) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 2:
+					System.out.println("************Bezeroak bistaratu************");
+					for (Bezeroak i : b) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 3:
+					System.out.println("************Langileak bistaratu************");
+					for (Langileak i : l) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 4:
+					System.out.println("************Ostatuak bistaratu************");
+					for (Ostatuak i : o) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 5:
+					System.out.println("************Kruzeroak bistaratu************");
+					for (Kruzeroak i : k) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 6:
+					System.out.println("************Apartamentuak bistaratu************");
+					for (Apartamentuak i : a) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 7:
+					System.out.println("************Hotelak bistaratu************");
+					for (Hotelak i : h) {
+						i.pantailaratu();
+						System.out.println("***************************");
+					}
+					break;
+				case 8:
+					Erreserba e2 = new Erreserba();
+					e2.irakurri(sc);
+					e.add(e2);
+					erreserbaldaketak = true;
+					break;
+				}
 
-		} while (menu != 0);
+			} while (menu != 0);
+		}
+		else if (bezero==true) {
+			System.out.println("Bezero menua:");
+			menu=sc.nextInt();
+			
+			switch (menu) {
+			case 1: 
+				
+				break;
+			
+			}
+		}
+			
+		
 
 		// Programatik datu basera pasatu datuak
 		try {

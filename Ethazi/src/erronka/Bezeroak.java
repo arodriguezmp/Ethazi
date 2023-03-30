@@ -15,21 +15,16 @@ public class Bezeroak extends Pertsonak {
 		super(n, i, a, t, e);
 		this.bezero_zbk = bz;
 	}
-	
-	public Bezeroak(String a, int f) {
-		super(a);
-		this.bezero_zbk=f;
-	}
 
 	@Override
 	public void pantailaratu() {
 		// TODO Auto-generated method stub
 		System.out.println("Nan zenbakia: " + this.nan);
+		System.out.println("Bezero zenbakia: " + this.bezero_zbk);
 		System.out.println("Izena: " + this.izena);
 		System.out.println("Abizena: " + this.abizena);
 		System.out.println("Telefonoa: " + this.tfno);
 		System.out.println("Email: " + this.email);
-		System.out.println("xxx " + this.bezero_zbk);
 	}
 
 	@Override
@@ -37,6 +32,8 @@ public class Bezeroak extends Pertsonak {
 		// TODO Auto-generated method stub
 		System.out.println("Sartu NAN:");
 		this.nan = teclado.next();
+		System.out.println("Sartu bezero zenbakia:");
+		this.bezero_zbk = teclado.nextInt();
 		System.out.println("Sartu Izena:");
 		this.izena = teclado.next();
 		System.out.println("Sartu Abizena:");
@@ -45,8 +42,7 @@ public class Bezeroak extends Pertsonak {
 		this.tfno = teclado.next();
 		System.out.println("Sartu email:");
 		this.email = teclado.next();
-		System.out.println("Sartu bezero zenbakia:");
-		this.bezero_zbk = teclado.nextInt();
 	}
+	
 
 }

@@ -23,13 +23,6 @@ public class Kruzeroak extends Ostatuak{
 		this.kamarote_mota=km;
 	}
 	
-	public Kruzeroak(int ko, int kz, String k, String km) {
-		super(ko);
-		this.kamarote_zenb=kz;
-		this.klasea=k;
-		this.kamarote_mota=km;
-	}
-	
 	public Kruzeroak(Kruzeroak k) {
 		super(k);
 		this.kamarote_zenb=k.kamarote_zenb;
@@ -69,10 +62,14 @@ public class Kruzeroak extends Ostatuak{
 	
 	
 	public void pantailaratu(){
-		System.out.println( kod_ostatua + "," + pertsona_kop + "," + kamarote_zenb+ "," + klasea + "," + kamarote_mota);
+		super.pantailaratu();
+		System.out.println("Kamarotearen zenbakia: "+ this.kamarote_zenb);
+		System.out.println("Kamarotearen klasea: "+ this.klasea);
+		System.out.println("Kamarotearen mota: "+ this.kamarote_mota);
 	}
 	
 	public void irakurri(Scanner teklatua) {
+		super.irakurri(teklatua);
 		System.out.println("Sartu kamarote zenbakia:");
 		this.kamarote_zenb =teklatua.nextInt();
 		System.out.println("Sartu klasea:");

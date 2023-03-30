@@ -20,12 +20,6 @@ public class Apartamentuak extends Ostatuak{
 		this.logela_kop=lk;
 	}
 	
-	public Apartamentuak(int ko, int kk, int lk) {
-		super(ko);
-		this.kommun_kop=kk;
-		this.logela_kop=lk;
-	}
-	
 	public Apartamentuak(Apartamentuak a) {
 		super(a);
 		this.kommun_kop=a.kommun_kop;
@@ -53,11 +47,12 @@ public class Apartamentuak extends Ostatuak{
 		return super.toString() + ", kommun_kop=" + kommun_kop + ", logela_kop=" + logela_kop + "]";
 	}
 	public void pantailaratu() {
-		System.out.println( super.kod_ostatua + "," + super.pertsona_kop + "," +  kommun_kop + "," + logela_kop );
+		super.pantailaratu();
+		System.out.println("Apartamentuko komun kopurua:"+ this.kommun_kop);
+		System.out.println("Apartamentuko logela kopurua: "+ this.logela_kop);
 	}
 	
 	public void irakurri(Scanner teklatua) {
-		
 		super.irakurri(teklatua);
 		System.out.println("Sartu komun kopurua:");
 		this.kommun_kop = teklatua.nextInt();
