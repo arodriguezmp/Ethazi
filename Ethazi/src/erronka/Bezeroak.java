@@ -15,6 +15,14 @@ public class Bezeroak extends Pertsonak {
 		super(n, i, a, t, e);
 		this.bezero_zbk = bz;
 	}
+	
+	public int getBezero_zbk() {
+		return bezero_zbk;
+	}
+
+	public void setBezero_zbk(int bezero_zbk) {
+		this.bezero_zbk = bezero_zbk;
+	}
 
 	@Override
 	public void pantailaratu() {

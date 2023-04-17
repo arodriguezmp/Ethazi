@@ -23,11 +23,13 @@ public class MainAgentzia {
 		ArrayList<Kruzeroak> k = new ArrayList<Kruzeroak>();
 		int menu;
 		boolean erreserbaldaketak = false;
-		boolean admin=false;
-		boolean bezero=true;
+		boolean bezeroaldaketak = false;
+		boolean pertsonaldaketak = false;
+		boolean admin = false;
+		boolean bezero = true;
 		String dni;
-		boolean encontrado=false;
-		int kont=0;
+		boolean encontrado = false;
+		int kont = 0;
 		String erabilsortu;
 
 		// scanner
@@ -69,7 +71,8 @@ public class MainAgentzia {
 				e.add(e1);
 			}
 
-			rs = st.executeQuery("SELECT * FROM agentzia.hotelak h, agentzia.ostatuak o WHERE h.kod_ostatua=o.kod_ostatua;");
+			rs = st.executeQuery(
+					"SELECT * FROM agentzia.hotelak h, agentzia.ostatuak o WHERE h.kod_ostatua=o.kod_ostatua;");
 			while (rs.next()) {
 				Hotelak h1 = new Hotelak(rs.getInt("kod_ostatua"), rs.getInt("pertsona_kop_max"),
 						rs.getString("gela_mota"), rs.getInt("gela_zenb"));
@@ -82,7 +85,8 @@ public class MainAgentzia {
 				o.add(o1);
 			}
 
-			rs = st.executeQuery("SELECT * FROM agentzia.kruzeroak k, agentzia.ostatuak o WHERE o.kod_ostatua=k.kod_ostatua;");
+			rs = st.executeQuery(
+					"SELECT * FROM agentzia.kruzeroak k, agentzia.ostatuak o WHERE o.kod_ostatua=k.kod_ostatua;");
 			while (rs.next()) {
 				Kruzeroak k1 = new Kruzeroak(rs.getInt("kod_ostatua"), rs.getInt("pertsona_kop_max"),
 						rs.getInt("kamarote_zenb"), rs.getString("klasea"), rs.getString("kamarote_mota"));
@@ -99,56 +103,53 @@ public class MainAgentzia {
 			sqle.printStackTrace();
 			System.out.println("Error de Conexión");
 		}
-		
-		//Saioa hasi
+
+		// Saioa hasi
 		System.out.println("Sartu erabiltzailea (NAN zenbakia):");
-		dni=sc.next();
-		while (encontrado==false && kont<b.size()){
-			
+		dni = sc.next();
+		while (encontrado == false && kont < b.size()) {
+
 			if (dni.equalsIgnoreCase(b.get(kont).getNan()) || dni.equalsIgnoreCase(l.get(kont).getNan())) {
-				encontrado=true;
+				encontrado = true;
 				if (dni.equalsIgnoreCase(l.get(kont).getNan())) {
-					admin=true;
-					bezero=false;
+					admin = true;
+					bezero = false;
 				}
-			}
-			else {
+			} else {
 				kont++;
 			}
 		}
-		
-		/*
-		if (encontrado==false) {
+
+		if (encontrado == false) {
 			System.out.println("Erabiltzaile hori ez da existitzen.");
 			System.out.println("Kontu berria sortu nahi duzu? (BAI/EZ)");
-			erabilsortu=sc.next();
+			erabilsortu = sc.next();
 			while (!erabilsortu.equalsIgnoreCase("ez") && !erabilsortu.equalsIgnoreCase("bai")) {
 				System.out.println("ERROR! BAI edo EZ bakarrik!");
-				erabilsortu=sc.next();
+				erabilsortu = sc.next();
 			}
 			if (erabilsortu.equalsIgnoreCase("ez")) {
-				
-			}
-			else {
-				kont=0;
-				encontrado=false;
-				while (encontrado==false && kont<b.size()) {
-					if(dni.equalsIgnoreCase(b.get(kont).getNan())) {
-						encontrado=true;
-					}
-					else {
+				bezero = false;
+				System.out.println("Agur");
+			} else {
+				kont = 0;
+				encontrado = false;
+				while (encontrado == false && kont < b.size()) {
+					if (dni.equalsIgnoreCase(b.get(kont).getNan())) {
+						encontrado = true;
+					} else {
 						kont++;
 					}
 				}
 				Bezeroak b1 = new Bezeroak();
 				b1.irakurri(sc);
+				b.add(b1);
+				bezeroaldaketak=true;
+				pertsonaldaketak=true;
 			}
 		}
-		*/
-		
-		
-		
-		if (admin==true) {
+
+		if (admin == true) {
 			System.out.println("Administrari menua");
 			do {
 				System.out.println("1- Erreserbak bistaratu");
@@ -227,20 +228,30 @@ public class MainAgentzia {
 				}
 
 			} while (menu != 0);
-		}
-		else if (bezero==true) {
+		} else if (bezero == true) {
 			System.out.println("Bezero menua:");
-			menu=sc.nextInt();
-			
-			switch (menu) {
-			case 1: 
-				
-				break;
-			
+			System.out.println("0- Irten");
+			menu = sc.nextInt();
+			do {
+				switch (menu) {
+				case 1:
+
+					break;
+
+				}
+			} while (menu != 0);
+
+		}
+		
+		if (pertsonaldaketak==true) {
+			System.out.println("Pertsonetan aldaketak daude");
+		}
+		if (bezeroaldaketak==true) {
+			System.out.println("Bezeroetan aldaketak daude");
+			for (Bezeroak i : b) {
+				i.pantailaratu();
 			}
 		}
-			
-		
 
 		// Programatik datu basera pasatu datuak
 		try {
@@ -269,11 +280,60 @@ public class MainAgentzia {
 					hasiera_data = dt.format(hd);
 					amaiera_data = dt.format(ad);
 
-					consulta = "INSERT INTO erreserbak VALUES ('" + nan + "'," + kod_ostatua + ",'" + hasiera_data
-							+ "','" + amaiera_data + "'," + prezioa + ");";
+					consulta="INSERT INTO erreserbak VALUES ('"+nan+"',"+kod_ostatua+",'"+hasiera_data+"','"+amaiera_data+"',"+prezioa+");";
 					st.executeUpdate(consulta);
 				}
 			}
+			
+			if (pertsonaldaketak == true) {
+				consulta = "DELETE FROM pertsonak";
+				st.executeUpdate(consulta);
+				
+				String nan;
+				String izena;
+				String abizena;
+				String email;
+				String tfno;
+				
+				for (Langileak i : l) {
+					nan=i.getNan();
+					izena=i.getIzena();
+					abizena=i.getAbizena();
+					email=i.getEmail();
+					tfno=i.getTfno();
+					
+					consulta = "INSERT INTO pertsonak VALUES ('"+nan+"','"+izena+"','"+abizena+"','"+email+"','"+tfno+"');";
+					st.executeUpdate(consulta);
+				}
+				
+				for (Bezeroak j : b) {
+					nan=j.getNan();
+					izena=j.getIzena();
+					abizena=j.getAbizena();
+					email=j.getEmail();
+					tfno=j.getTfno();
+					
+					consulta = "INSERT INTO pertsonak VALUES ('"+nan+"','"+izena+"','"+abizena+"','"+email+"','"+tfno+"');";
+					st.executeUpdate(consulta);
+				}
+			}
+			
+			
+			if (bezeroaldaketak == true) {
+				consulta = "DELETE FROM erreserbak";
+				st.executeUpdate(consulta);
+				String nan;
+				int bezero_zbk;
+				
+				for (Bezeroak i : b) {
+					nan=i.getNan();
+					bezero_zbk=i.getBezero_zbk();
+					
+					consulta = "INSERT INTO bezeroak VALUES ('"+nan+"',"+bezero_zbk+");";
+					st.executeUpdate(consulta);
+				}
+			}
+			
 		} catch (SQLException sqle) {
 			// TODO: handle exception
 		}
