@@ -41,7 +41,7 @@ public class Hotelak extends Ostatuak {
 		this.gela_zenbakia = gela_zenbakia;
 	}
 
-	@Override
+	
 	public String toString() {
 		return super.toString() + ", gela_mota=" + gela_mota + ", gela_zenbakia=" + gela_zenbakia + "]";
 	}

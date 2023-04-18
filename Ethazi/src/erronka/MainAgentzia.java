@@ -120,6 +120,7 @@ public class MainAgentzia {
 			}
 		}
 
+		//Erabiltzailea datu basean ez badago
 		if (encontrado == false) {
 			System.out.println("Erabiltzaile hori ez da existitzen.");
 			System.out.println("Kontu berria sortu nahi duzu? (BAI/EZ)");
@@ -128,9 +129,11 @@ public class MainAgentzia {
 				System.out.println("ERROR! BAI edo EZ bakarrik!");
 				erabilsortu = sc.next();
 			}
+			//Erabiltzaileak erabiltzaile berri bat sortu nahi ez badu
 			if (erabilsortu.equalsIgnoreCase("ez")) {
 				bezero = false;
 				System.out.println("Agur");
+			//Erabiltzaileak erabiltzaile berri bat sortzen badu
 			} else {
 				kont = 0;
 				encontrado = false;

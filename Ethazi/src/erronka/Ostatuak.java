@@ -40,7 +40,7 @@ public class Ostatuak {
 		this.pertsona_kop = pertsona_kop;
 	}
 
-	@Override
+	
 	public String toString() {
 		return "Ostatuak [kod_ostatua=" + kod_ostatua + ", pertsona_kop=" + pertsona_kop;
 	}

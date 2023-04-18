@@ -76,7 +76,7 @@ public class Erreserba implements Bez{
 		this.kod_ostatua = kod_ostatua;
 	}
 
-	@Override
+	
 	public String toString() {
 		return "erreserba [prezioa=" + prezioa + ", hasiera_data=" + hasiera_data + ", amaiera_data=" + amaiera_data
 				+ ", nan=" + nan + ", kod_ostatua=" + kod_ostatua + "]";

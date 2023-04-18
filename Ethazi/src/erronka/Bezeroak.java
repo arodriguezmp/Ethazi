@@ -24,7 +24,7 @@ public class Bezeroak extends Pertsonak {
 		this.bezero_zbk = bezero_zbk;
 	}
 
-	@Override
+	
 	public void pantailaratu() {
 		// TODO Auto-generated method stub
 		System.out.println("Nan zenbakia: " + this.nan);
@@ -35,7 +35,7 @@ public class Bezeroak extends Pertsonak {
 		System.out.println("Email: " + this.email);
 	}
 
-	@Override
+	
 	public void irakurri(Scanner teclado) {
 		// TODO Auto-generated method stub
 		System.out.println("Sartu NAN:");

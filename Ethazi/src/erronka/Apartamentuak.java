@@ -42,7 +42,7 @@ public class Apartamentuak extends Ostatuak{
 		this.logela_kop = logela_kop;
 	}
 
-	@Override
+	
 	public String toString() {
 		return super.toString() + ", kommun_kop=" + kommun_kop + ", logela_kop=" + logela_kop + "]";
 	}

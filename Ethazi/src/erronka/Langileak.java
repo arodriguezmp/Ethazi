@@ -20,7 +20,7 @@ public class Langileak extends Pertsonak implements Serializable {
 		this.lan_postua = lp;
 	}
 
-	@Override
+	
 	public void pantailaratu() {
 		// TODO Auto-generated method stub
 		System.out.println("Nan zenbakia: " + this.nan);
@@ -32,7 +32,7 @@ public class Langileak extends Pertsonak implements Serializable {
 		System.out.println("Lan postua: " + this.lan_postua);
 	}
 	
-	@Override
+	
 	public void irakurri(Scanner teclado) {
 		// TODO Auto-generated method stub
 		System.out.println("Sartu NAN:");

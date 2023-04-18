@@ -54,7 +54,7 @@ public class Kruzeroak extends Ostatuak{
 		this.kamarote_mota = kamarote_mota;
 	}
 
-	@Override
+	
 	public String toString() {
 		return super.toString() + ", kamarote_zenb=" + kamarote_zenb + ", klasea=" + klasea + ", kamarote_mota=" + kamarote_mota
 				+ "]";
