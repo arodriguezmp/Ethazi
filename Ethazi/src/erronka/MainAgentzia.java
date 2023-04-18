@@ -120,7 +120,7 @@ public class MainAgentzia {
 			}
 		}
 
-		//Erabiltzailea datu basean ez badago
+		// Erabiltzailea datu basean ez badago
 		if (encontrado == false) {
 			System.out.println("Erabiltzaile hori ez da existitzen.");
 			System.out.println("Kontu berria sortu nahi duzu? (BAI/EZ)");
@@ -129,11 +129,11 @@ public class MainAgentzia {
 				System.out.println("ERROR! BAI edo EZ bakarrik!");
 				erabilsortu = sc.next();
 			}
-			//Erabiltzaileak erabiltzaile berri bat sortu nahi ez badu
+			// Erabiltzaileak erabiltzaile berri bat sortu nahi ez badu
 			if (erabilsortu.equalsIgnoreCase("ez")) {
 				bezero = false;
 				System.out.println("Agur");
-			//Erabiltzaileak erabiltzaile berri bat sortzen badu
+				// Erabiltzaileak erabiltzaile berri bat sortzen badu
 			} else {
 				kont = 0;
 				encontrado = false;
@@ -147,8 +147,8 @@ public class MainAgentzia {
 				Bezeroak b1 = new Bezeroak();
 				b1.irakurri(sc);
 				b.add(b1);
-				bezeroaldaketak=true;
-				pertsonaldaketak=true;
+				bezeroaldaketak = true;
+				pertsonaldaketak = true;
 			}
 		}
 
@@ -163,13 +163,12 @@ public class MainAgentzia {
 				System.out.println("6- Apartamantuak bistaratu");
 				System.out.println("7- Hotelak bistaratu");
 				System.out.println("8- Erreserba bat gehitu");
-				System.out.println("9- ");
-				System.out.println("10- ");
-				System.out.println("11- ");
-				System.out.println("12- ");
-				System.out.println("13- ");
-				System.out.println("14- ");
-				System.out.println("15- ");
+				/*
+				 * System.out.println("9- "); System.out.println("10- ");
+				 * System.out.println("11- "); System.out.println("12- ");
+				 * System.out.println("13- "); System.out.println("14- ");
+				 * System.out.println("15- ");
+				 */
 				System.out.println("0- Irten");
 				menu = sc.nextInt();
 				switch (menu) {
@@ -245,11 +244,11 @@ public class MainAgentzia {
 			} while (menu != 0);
 
 		}
-		
-		if (pertsonaldaketak==true) {
+
+		if (pertsonaldaketak == true) {
 			System.out.println("Pertsonetan aldaketak daude");
 		}
-		if (bezeroaldaketak==true) {
+		if (bezeroaldaketak == true) {
 			System.out.println("Bezeroetan aldaketak daude");
 			for (Bezeroak i : b) {
 				i.pantailaratu();
@@ -261,7 +260,7 @@ public class MainAgentzia {
 			String consulta = "";
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/agentzia", "root", "");
 			Statement st = conexion.createStatement();
-			if (erreserbaldaketak == true) {
+			if (erreserbaldaketak) {
 				consulta = "DELETE FROM erreserbak";
 				st.executeUpdate(consulta);
 				String nan;
@@ -283,62 +282,115 @@ public class MainAgentzia {
 					hasiera_data = dt.format(hd);
 					amaiera_data = dt.format(ad);
 
-					consulta="INSERT INTO erreserbak VALUES ('"+nan+"',"+kod_ostatua+",'"+hasiera_data+"','"+amaiera_data+"',"+prezioa+");";
+					consulta = "INSERT INTO erreserbak VALUES ('" + nan + "'," + kod_ostatua + ",'" + hasiera_data
+							+ "','" + amaiera_data + "'," + prezioa + ");";
 					st.executeUpdate(consulta);
 				}
 			}
-			
-			if (pertsonaldaketak == true) {
-				consulta = "DELETE FROM pertsonak";
+		} catch (SQLException sqle) {
+			// TODO: handle exception
+			System.out.println("Erreserbak: "+sqle.getMessage());
+		}
+
+		try {
+			String consulta = "";
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/agentzia", "root", "");
+			Statement st = conexion.createStatement();
+			if (bezeroaldaketak) {
+				//erreserbak>>langileak>>bezeroak>>pertsonak
+				consulta = "DELETE FROM erreserbak";
 				st.executeUpdate(consulta);
 				
+				consulta = "DELETE FROM langileak";
+				st.executeUpdate(consulta);
+				
+				consulta = "DELETE FROM bezeroak";
+				st.executeUpdate(consulta);
+				
+				consulta = "DELETE FROM pertsonak";
+				st.executeUpdate(consulta);
+
 				String nan;
 				String izena;
 				String abizena;
 				String email;
 				String tfno;
 				
+				//pertsonak>>bezeroak>>langileak>>erreserbak
+				
+				//Pertsonak
 				for (Langileak i : l) {
-					nan=i.getNan();
-					izena=i.getIzena();
-					abizena=i.getAbizena();
-					email=i.getEmail();
-					tfno=i.getTfno();
-					
-					consulta = "INSERT INTO pertsonak VALUES ('"+nan+"','"+izena+"','"+abizena+"','"+email+"','"+tfno+"');";
+					nan = i.getNan();
+					izena = i.getIzena();
+					abizena = i.getAbizena();
+					email = i.getEmail();
+					tfno = i.getTfno();
+
+					consulta = "INSERT INTO pertsonak VALUES ('" + nan + "','" + izena + "','" + abizena + "','" + email
+							+ "','" + tfno + "');";
 					st.executeUpdate(consulta);
 				}
 				
+				//Pertsonak
 				for (Bezeroak j : b) {
-					nan=j.getNan();
-					izena=j.getIzena();
-					abizena=j.getAbizena();
-					email=j.getEmail();
-					tfno=j.getTfno();
-					
-					consulta = "INSERT INTO pertsonak VALUES ('"+nan+"','"+izena+"','"+abizena+"','"+email+"','"+tfno+"');";
+					nan = j.getNan();
+					izena = j.getIzena();
+					abizena = j.getAbizena();
+					email = j.getEmail();
+					tfno = j.getTfno();
+
+					consulta = "INSERT INTO pertsonak VALUES ('" + nan + "','" + izena + "','" + abizena + "','" + email
+							+ "','" + tfno + "');";
 					st.executeUpdate(consulta);
 				}
-			}
-			
-			
-			if (bezeroaldaketak == true) {
-				consulta = "DELETE FROM erreserbak";
-				st.executeUpdate(consulta);
-				String nan;
 				int bezero_zbk;
-				
+				//Bezeroak
 				for (Bezeroak i : b) {
-					nan=i.getNan();
-					bezero_zbk=i.getBezero_zbk();
+					nan = i.getNan();
+					bezero_zbk = i.getBezero_zbk();
+
+					consulta = "INSERT INTO bezeroak VALUES ('" + nan + "'," + bezero_zbk + ");";
+					st.executeUpdate(consulta);
+				}
+				String administrator;
+				String lan_postua;
+				//Langileak
+				for (Langileak i : l) {
+					nan = i.getNan();
+					administrator = i.getAdmin();
+					lan_postua = i.getLan_postua();
+
 					
-					consulta = "INSERT INTO bezeroak VALUES ('"+nan+"',"+bezero_zbk+");";
+					consulta = "INSERT INTO langileak VALUES ('" + nan + "','" + administrator + "','" + lan_postua + "');";
+					st.executeUpdate(consulta);
+				} 
+				//Erreserbak
+				int kod_ostatua;
+				Date hd;
+				Date ad;
+				int prezioa;
+				String hasiera_data;
+				String amaiera_data;
+				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+
+				for (Erreserba i : e) {
+					nan = i.getNan();
+					kod_ostatua = i.getKod_ostatua();
+					hd = i.getHasiera_data();
+					ad = i.getAmaiera_data();
+					prezioa = i.getPrezioa();
+
+					hasiera_data = dt.format(hd);
+					amaiera_data = dt.format(ad);
+
+					consulta = "INSERT INTO erreserbak VALUES ('" + nan + "'," + kod_ostatua + ",'" + hasiera_data
+							+ "','" + amaiera_data + "'," + prezioa + ");";
 					st.executeUpdate(consulta);
 				}
 			}
-			
 		} catch (SQLException sqle) {
 			// TODO: handle exception
+			System.out.println("Bezeroak: "+sqle.getMessage());
 		}
 
 	}

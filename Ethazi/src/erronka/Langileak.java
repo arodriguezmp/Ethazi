@@ -20,7 +20,22 @@ public class Langileak extends Pertsonak implements Serializable {
 		this.lan_postua = lp;
 	}
 
-	
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	public String getLan_postua() {
+		return lan_postua;
+	}
+
+	public void setLan_postua(String lan_postua) {
+		this.lan_postua = lan_postua;
+	}
+
 	public void pantailaratu() {
 		// TODO Auto-generated method stub
 		System.out.println("Nan zenbakia: " + this.nan);
