@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class MainAgentzia {
 
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Apartamentuak> a = new ArrayList<Apartamentuak>();
@@ -289,7 +290,7 @@ public class MainAgentzia {
 			}
 		} catch (SQLException sqle) {
 			// TODO: handle exception
-			System.out.println("Erreserbak: "+sqle.getMessage());
+			System.out.println("Erreserbak: " + sqle.getMessage());
 		}
 
 		try {
@@ -297,16 +298,16 @@ public class MainAgentzia {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/agentzia", "root", "");
 			Statement st = conexion.createStatement();
 			if (bezeroaldaketak) {
-				//erreserbak>>langileak>>bezeroak>>pertsonak
+				// erreserbak>>langileak>>bezeroak>>pertsonak
 				consulta = "DELETE FROM erreserbak";
 				st.executeUpdate(consulta);
-				
+
 				consulta = "DELETE FROM langileak";
 				st.executeUpdate(consulta);
-				
+
 				consulta = "DELETE FROM bezeroak";
 				st.executeUpdate(consulta);
-				
+
 				consulta = "DELETE FROM pertsonak";
 				st.executeUpdate(consulta);
 
@@ -315,10 +316,10 @@ public class MainAgentzia {
 				String abizena;
 				String email;
 				String tfno;
-				
-				//pertsonak>>bezeroak>>langileak>>erreserbak
-				
-				//Pertsonak
+
+				// pertsonak>>bezeroak>>langileak>>erreserbak
+
+				// Pertsonak
 				for (Langileak i : l) {
 					nan = i.getNan();
 					izena = i.getIzena();
@@ -330,8 +331,8 @@ public class MainAgentzia {
 							+ "','" + tfno + "');";
 					st.executeUpdate(consulta);
 				}
-				
-				//Pertsonak
+
+				// Pertsonak
 				for (Bezeroak j : b) {
 					nan = j.getNan();
 					izena = j.getIzena();
@@ -344,7 +345,7 @@ public class MainAgentzia {
 					st.executeUpdate(consulta);
 				}
 				int bezero_zbk;
-				//Bezeroak
+				// Bezeroak
 				for (Bezeroak i : b) {
 					nan = i.getNan();
 					bezero_zbk = i.getBezero_zbk();
@@ -354,17 +355,17 @@ public class MainAgentzia {
 				}
 				String administrator;
 				String lan_postua;
-				//Langileak
+				// Langileak
 				for (Langileak i : l) {
 					nan = i.getNan();
 					administrator = i.getAdmin();
 					lan_postua = i.getLan_postua();
 
-					
-					consulta = "INSERT INTO langileak VALUES ('" + nan + "','" + administrator + "','" + lan_postua + "');";
+					consulta = "INSERT INTO langileak VALUES ('" + nan + "','" + administrator + "','" + lan_postua
+							+ "');";
 					st.executeUpdate(consulta);
-				} 
-				//Erreserbak
+				}
+				// Erreserbak
 				int kod_ostatua;
 				Date hd;
 				Date ad;
@@ -390,7 +391,7 @@ public class MainAgentzia {
 			}
 		} catch (SQLException sqle) {
 			// TODO: handle exception
-			System.out.println("Bezeroak: "+sqle.getMessage());
+			System.out.println("Bezeroak: " + sqle.getMessage());
 		}
 
 	}
