@@ -67,6 +67,11 @@ public class Langileak extends Pertsonak implements Serializable {
 
 	}
 
+	@Override
+	public String toString() {
+		return super.toString()+" admin=" + admin + ", lan_postua=" + lan_postua + "]";
+	}
+
 
 
 }

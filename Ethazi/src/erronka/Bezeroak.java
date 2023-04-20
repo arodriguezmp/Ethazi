@@ -51,6 +51,11 @@ public class Bezeroak extends Pertsonak {
 		System.out.println("Sartu email:");
 		this.email = teclado.next();
 	}
+
+	@Override
+	public String toString() {
+		return super.toString()+" Bezeroak [bezero_zbk=" + bezero_zbk + "]";
+	}
 	
 
 }
