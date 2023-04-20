@@ -77,7 +77,7 @@ public abstract class Pertsonak {
 	@Override
 	public String toString() {
 		return "Pertsonak [nan=" + nan + ", izena=" + izena + ", abizena=" + abizena + ", tfno=" + tfno + ", email="
-				+ email + "]";
+				+ email;
 	}
 
 }

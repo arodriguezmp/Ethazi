@@ -174,6 +174,7 @@ public class MainAgentzia {
 					}
 					Bezeroak b1 = new Bezeroak();
 					b1.irakurri(sc);
+					LOGGER.log(Level.FINE, "Bezero berri bat erregistratu da du: " + b1);
 					b.add(b1);
 					bezeroaldaketak = true;
 					pertsonaldaketak = true;

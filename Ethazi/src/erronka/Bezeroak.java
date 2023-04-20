@@ -54,7 +54,7 @@ public class Bezeroak extends Pertsonak {
 
 	@Override
 	public String toString() {
-		return super.toString()+" Bezeroak [bezero_zbk=" + bezero_zbk + "]";
+		return super.toString()+" bezero_zbk=" + bezero_zbk + "]";
 	}
 	
 
