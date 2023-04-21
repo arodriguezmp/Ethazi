@@ -1,5 +1,7 @@
 package erronka;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -13,42 +15,32 @@ public class MainProba {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
 		Handler fileHandler = null;
 		Handler fileHandler1 = null;
 		int dni;
 
+		
 		try {
-
-			fileHandler = new FileHandler("./logs/ficheroLogErrores.log", true);
-			fileHandler1 = new FileHandler("./logs/ficheroLogActividades" + System.currentTimeMillis() + ".log", false);
-
-			fileHandler1.setFormatter(new Formato());
-			fileHandler.setFormatter(new SimpleFormatter());
-
-			LOGGER.addHandler(fileHandler);
-			fileHandler.setLevel(Level.SEVERE);
-			LOGGER.addHandler(fileHandler1);
-			fileHandler1.setLevel(Level.FINE);
-			// Establecer niveles a handlers y LOGGER
-
-			
-			
-
-			// Eliminamos handler de la consola
-
-			Scanner scanner = new Scanner(System.in);
-			Erreserba b1 = new Erreserba();
-			System.out.println("hola:");
-			dni = scanner.nextInt();
-			LOGGER.log(Level.FINE, "Index vale: " + scanner);
-
-			b1.pantailaratu();
-		} catch (Exception exception) {
-			LOGGER.log(Level.SEVERE, "Ocurrió una Excepcion.", exception);
-
-	
-		}
+            // Crea un FileHandler para guardar los mensajes de error
+            Handler fileHandlerError = new FileHandler("./logs/errores.log", true);
+            fileHandlerError.setFormatter(new SimpleFormatter());
+            LOGGER.addHandler(fileHandlerError);
+            LOGGER.setLevel(Level.SEVERE);
+  
+            // Crea otro FileHandler para guardar la actividad del usuario
+            Handler fileHandlerActividad = new FileHandler("./logs/actividad"+System.currentTimeMillis()+".log", false);
+            fileHandlerActividad.setFormatter(new SimpleFormatter());
+            LOGGER.addHandler(fileHandlerActividad);
+            LOGGER.setLevel(Level.FINE);
+  
+            LOGGER.info("El programa ha iniciado"); // Mensaje para el handler de actividad
+            System.out.println("Sartu zenbakia");
+            int numero; // Genera una excepción para el handler de errores
+            numero=sc.nextInt();
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Ocurrió una excepción al crear el logger", e);
+        }
 	}
 
 }
