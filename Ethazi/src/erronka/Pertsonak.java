@@ -31,8 +31,7 @@ public abstract class Pertsonak {
 	}
 
 	public abstract void pantailaratu();
-
-	public abstract void irakurri(Scanner teclado);
+	
 
 	public String getNan() {
 		return nan;

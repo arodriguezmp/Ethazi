@@ -39,7 +39,7 @@ public class MainAgentzia {
 		boolean bezero = true;
 		String dni;
 		boolean encontrado = false;
-		int kont = 0;
+		int kont = 0, bezerokont = 0, langilekont = 0;
 		String erabilsortu;
 
 		// scanner
@@ -135,19 +135,32 @@ public class MainAgentzia {
 			// Saioa hasi
 			System.out.println("Sartu erabiltzailea (NAN zenbakia):");
 			dni = sc.next();
-			while (encontrado == false && kont < b.size()) {
+			//Bezeroa bada begiratzeko
+			bezerokont=0;
+			encontrado=false;
+			while (encontrado == false && bezerokont < b.size()) {
 
-				if (dni.equalsIgnoreCase(b.get(kont).getNan()) || dni.equalsIgnoreCase(l.get(kont).getNan())) {
+				if (dni.equalsIgnoreCase(b.get(bezerokont).getNan())) {
 					encontrado = true;
-					if (dni.equalsIgnoreCase(l.get(kont).getNan())) {
-						admin = true;
-						bezero = false;
-					}
+					bezero = true;
+					admin=false;
 				} else {
-					kont++;
+					bezerokont++;
 				}
 			}
+			//Langilea bada begiratzeko
+			langilekont=0;
+			while (encontrado == false && langilekont < l.size()) {
 
+				if (dni.equalsIgnoreCase(l.get(langilekont).getNan())) {
+					encontrado = true;
+					admin=true;
+					bezero=false;
+				} else {
+					langilekont++;
+				}
+			}
+			
 			// Erabiltzailea datu basean ez badago
 			if (encontrado == false) {
 				System.out.println("Erabiltzaile hori ez da existitzen.");
@@ -173,7 +186,7 @@ public class MainAgentzia {
 						}
 					}
 					Bezeroak b1 = new Bezeroak();
-					b1.irakurri(sc);
+					b1.irakurri(sc, b);
 					LOGGER.log(Level.FINE, "Bezero berri bat erregistratu da du: " + b1);
 					b.add(b1);
 					bezeroaldaketak = true;
@@ -183,6 +196,7 @@ public class MainAgentzia {
 
 			if (admin == true) {
 				System.out.println("Administrari menua");
+				System.out.println("Ongi etorri " + l.get(langilekont).getIzena()+ " " + l.get(langilekont).getAbizena());
 				do {
 					System.out.println("1- Erreserbak bistaratu");
 					System.out.println("2- Bezeroak bistaratu");
@@ -263,6 +277,7 @@ public class MainAgentzia {
 				} while (menu != 0);
 			} else if (bezero == true) {
 				System.out.println("Bezero menua:");
+				System.out.println("Ongi etorri " + b.get(bezerokont).getIzena()+ " " + b.get(bezerokont).getAbizena());
 				System.out.println("0- Irten");
 				menu = sc.nextInt();
 				do {
@@ -274,16 +289,6 @@ public class MainAgentzia {
 					}
 				} while (menu != 0);
 
-			}
-
-			if (pertsonaldaketak == true) {
-				System.out.println("Pertsonetan aldaketak daude");
-			}
-			if (bezeroaldaketak == true) {
-				System.out.println("Bezeroetan aldaketak daude");
-				for (Bezeroak i : b) {
-					i.pantailaratu();
-				}
 			}
 
 			// Programatik datu basera pasatu datuak
