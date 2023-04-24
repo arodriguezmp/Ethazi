@@ -1,0 +1,10 @@
+abr 20, 2023 2:19:14 P. M. erronka.MainAgentzia main
+GRAVE: Ocurrió una Excepcion.
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at erronka.Bezeroak.irakurri(Bezeroak.java:62)
+	at erronka.MainAgentzia.main(MainAgentzia.java:176)
+

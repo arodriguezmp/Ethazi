@@ -63,7 +63,6 @@ public class Bezeroak extends Pertsonak {
 		        kont++;
 		    }
 		}
-		
 		this.bezero_zbk = (arraybezero.get(arraybezero.size()-1).getBezero_zbk()+1);
 		System.out.println("Zure bezero zenbakia: " + this.bezero_zbk);
 		System.out.println("Sartu Izena:");

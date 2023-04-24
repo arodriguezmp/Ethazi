@@ -61,8 +61,6 @@ public class MainAgentzia {
 			// Establecer niveles a handlers y LOGGER
 
 			// Datu basearekin konexioa
-
-			// Datu basearekin konexioa
 			try {
 				Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/agentzia", "root", "");
 				// si se ha conectado correctamente

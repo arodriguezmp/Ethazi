@@ -1,0 +1,10 @@
+abr 21, 2023 10:30:23 A. M. erronka.MainAgentzia main
+GRAVE: Ocurrió una Excepcion.
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 5
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:359)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at erronka.MainAgentzia.main(MainAgentzia.java:142)
+
