@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 class ApartamentuakTest {
 
+	/**
+	 * Test bat, Irakurri funtzioa komprobatzeko	 */
 	@Test
 	void testIrakurri() {
 		String input = "1\n1\n2\n3\n";

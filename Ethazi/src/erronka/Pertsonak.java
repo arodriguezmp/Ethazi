@@ -1,7 +1,5 @@
 package erronka;
 
-import java.util.Scanner;
-
 public abstract class Pertsonak {
 	protected String nan;
 	protected String izena;
