@@ -31,7 +31,7 @@ public class Bezeroak extends Pertsonak {
 	}
 
 	/**
-	 * Bezero zenbakia hartzeko
+	 * Bezero zenbakia hartzeko getter bat
 	 * 
 	 * @return bezero zenbakia
 	 */
@@ -40,7 +40,7 @@ public class Bezeroak extends Pertsonak {
 	}
 
 	/**
-	 * Bezeroak aldatzeko
+	 * Bezeroak aldatzeko setter bat
 	 * 
 	 * @param bezero_zbk
 	 */

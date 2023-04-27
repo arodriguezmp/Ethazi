@@ -42,7 +42,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * Prezioa hartzen du
+	 * Prezioa hartzen duen getter bat
 	 * 
 	 * @return prezioa
 	 */
@@ -51,7 +51,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * Prezioa aldatze
+	 * Prezioa aldatzen duen setter bat
 	 * 
 	 * @param prezioa
 	 */
@@ -60,7 +60,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * Hasiera data hartzen du
+	 * Hasiera data hartzen duen getter bat
 	 * 
 	 * @return hasiera_data
 	 */
@@ -69,7 +69,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * Hasiera_data aldatzen du
+	 * Hasiera_data aldatzen duen setter bat
 	 * 
 	 * @param hasiera_data
 	 */
@@ -78,7 +78,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * amaiera_data hartzen du
+	 * amaiera_data hartzen duen getter bat
 	 * 
 	 * @return amaiera_data
 	 */
@@ -87,7 +87,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * amaiera_data aldatzen du
+	 * amaiera_data aldatzen duen setter bat
 	 * 
 	 * @param amaiera_data
 	 */
@@ -96,7 +96,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * nan hartzen du
+	 * nan hartzen duen getter bat
 	 * 
 	 * @return nan
 	 */
@@ -105,7 +105,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * nan aldatzen du
+	 * nan aldatzen duen setter bat
 	 * 
 	 * @param nan
 	 */
@@ -114,7 +114,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * kod_ostatua hartzen du
+	 * kod_ostatua hartzen duen getter bat
 	 * 
 	 * @return kod_ostatua
 	 */
@@ -123,7 +123,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * kod_ostatua aldatzen du
+	 * kod_ostatua aldatzen duen setter bat
 	 * 
 	 * @param kod_ostatua
 	 */
@@ -145,7 +145,7 @@ public class Erreserba implements Bez {
 	}
 
 	/**
-	 * irakurri datuak sartzeko
+	 * irakurri datuak sartzeko eta try/catch bat dauka datentzat
 	 * 
 	 * @param teclado eskaner bidez
 	 */

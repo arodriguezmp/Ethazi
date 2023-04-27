@@ -45,7 +45,7 @@ public class Apartamentuak extends Ostatuak{
 	}
 
 	/**
-	 *Komun kopuruak hartzen ditu
+	 *Komun kopuruak hartzen dituen getter bat
 	 * @return kommun_kop
 	 */
 	public int getKommun_kop() {
@@ -53,7 +53,7 @@ public class Apartamentuak extends Ostatuak{
 	}
 	
 	/**
-	 * Kommun_kop aldatzeko
+	 * Kommun_kop aldatzen duen setter bat
 	 * @param kommun_kop
 	 */
 	public void setKommun_kop(int kommun_kop) {
@@ -61,7 +61,7 @@ public class Apartamentuak extends Ostatuak{
 	}
 
 	/**
-	 * Logelak hartzen ditu
+	 * Logelak hartzen dituen getter bat
 	 * @return logela_kop
 	 */
 	public int getLogela_kop() {
@@ -69,7 +69,7 @@ public class Apartamentuak extends Ostatuak{
 	}
 
 	/**
-	 * Logela kopurua aldatzen du
+	 * Logela kopurua aldatzen duen setter bat
 	 * @param logela_kop
 	 */
 	public void setLogela_kop(int logela_kop) {

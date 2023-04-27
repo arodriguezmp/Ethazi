@@ -133,32 +133,32 @@ public class MainAgentzia {
 			// Saioa hasi
 			System.out.println("Sartu erabiltzailea (NAN zenbakia):");
 			dni = sc.next();
-			//Bezeroa bada begiratzeko
-			bezerokont=0;
-			encontrado=false;
+			// Bezeroa bada begiratzeko
+			bezerokont = 0;
+			encontrado = false;
 			while (encontrado == false && bezerokont < b.size()) {
 
 				if (dni.equalsIgnoreCase(b.get(bezerokont).getNan())) {
 					encontrado = true;
 					bezero = true;
-					admin=false;
+					admin = false;
 				} else {
 					bezerokont++;
 				}
 			}
-			//Langilea bada begiratzeko
-			langilekont=0;
+			// Langilea bada begiratzeko
+			langilekont = 0;
 			while (encontrado == false && langilekont < l.size()) {
 
 				if (dni.equalsIgnoreCase(l.get(langilekont).getNan())) {
 					encontrado = true;
-					admin=true;
-					bezero=false;
+					admin = true;
+					bezero = false;
 				} else {
 					langilekont++;
 				}
 			}
-			
+
 			// Erabiltzailea datu basean ez badago
 			if (encontrado == false) {
 				System.out.println("Erabiltzaile hori ez da existitzen.");
@@ -194,7 +194,8 @@ public class MainAgentzia {
 
 			if (admin == true) {
 				System.out.println("Administrari menua");
-				System.out.println("Ongi etorri " + l.get(langilekont).getIzena()+ " " + l.get(langilekont).getAbizena());
+				System.out.println(
+						"Ongi etorri " + l.get(langilekont).getIzena() + " " + l.get(langilekont).getAbizena());
 				do {
 					System.out.println("1- Erreserbak bistaratu");
 					System.out.println("2- Bezeroak bistaratu");
@@ -259,14 +260,15 @@ public class MainAgentzia {
 						break;
 					case 8:
 						System.out.println("************Erreserba bat ezabatu************");
-						
+
 						break;
 					}
 
 				} while (menu != 0);
 			} else if (bezero == true) {
 				System.out.println("Bezero menua:");
-				System.out.println("Ongi etorri " + b.get(bezerokont).getIzena()+ " " + b.get(bezerokont).getAbizena());
+				System.out
+						.println("Ongi etorri " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
 				System.out.println("0- Irten");
 				System.out.println("1- Erreserba bat gehitu");
 				System.out.println("2- Erreserba baten data aldatu");
