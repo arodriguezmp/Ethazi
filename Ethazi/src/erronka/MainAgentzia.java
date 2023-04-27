@@ -263,13 +263,6 @@ public class MainAgentzia {
 							System.out.println("***************************");
 						}
 						break;
-					case 8:
-						Erreserba e2 = new Erreserba();
-						e2.irakurri(sc);
-						LOGGER.log(Level.FINE, "Bezerak erreserbatu du: " + e2);
-						e.add(e2);
-						erreserbaldaketak = true;
-						break;
 					}
 
 				} while (menu != 0);
@@ -281,7 +274,11 @@ public class MainAgentzia {
 				do {
 					switch (menu) {
 					case 1:
-
+						Erreserba e2 = new Erreserba();
+						e2.irakurri(sc);
+						LOGGER.log(Level.FINE, "Bezerak erreserbatu du: " + e2);
+						e.add(e2);
+						erreserbaldaketak = true;
 						break;
 
 					}
