@@ -32,6 +32,7 @@ public class MainAgentzia {
 		ArrayList<Ostatuak> o = new ArrayList<Ostatuak>();
 		ArrayList<Kruzeroak> k = new ArrayList<Kruzeroak>();
 		int menu;
+		int telf;
 		boolean erreserbaldaketak = false;
 		boolean bezeroaldaketak = false;
 		boolean pertsonaldaketak = false;
@@ -204,7 +205,7 @@ public class MainAgentzia {
 					System.out.println("5- Kruzeroak bistaratu");
 					System.out.println("6- Apartamantuak bistaratu");
 					System.out.println("7- Hotelak bistaratu");
-					System.out.println("8- Erreserba bat ezabatu");
+					System.out.println("9- Erreserba bat ezabatu");
 					System.out.println("0- Irten");
 					menu = sc.nextInt();
 					LOGGER.log(Level.FINE, "Bezeroak menuan hurrengo aukera egin du: " + menu);
@@ -271,7 +272,7 @@ public class MainAgentzia {
 						.println("Ongi etorri " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
 				System.out.println("0- Irten");
 				System.out.println("1- Erreserba bat gehitu");
-				System.out.println("2- Erreserba baten data aldatu");
+				System.out.println("2- Zure telefono zenbakia aldatu");
 				menu = sc.nextInt();
 				do {
 					switch (menu) {
@@ -284,7 +285,10 @@ public class MainAgentzia {
 						erreserbaldaketak = true;
 						break;
 					case 2:
-						System.out.println("************Erreserba baten data aldatu************");
+						System.out.println("************Zure telefono zenbakia aldatu************");
+						System.out.println("Kaixo " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
+						System.out.println("Sartu zure telefono zenbaki berria:");
+						telf=sc.nextInt();
 						break;
 					}
 				} while (menu != 0);
