@@ -190,7 +190,7 @@ public class MainAgentzia {
 					LOGGER.log(Level.FINE, "Bezero berri bat erregistratu da du: " + b1);
 					b.add(b1);
 					bezeroaldaketak = true;
-					pertsonaldaketak=true;
+					pertsonaldaketak = true;
 				}
 			}
 
@@ -208,7 +208,7 @@ public class MainAgentzia {
 					System.out.println("7- Hotelak bistaratu");
 					System.out.println("0- Irten");
 					menu = sc.nextInt();
-					LOGGER.log(Level.FINE, "Bezeroak menuan hurrengo aukera egin du: " + menu);
+					LOGGER.log(Level.FINE, "Langileak menuan hurrengo aukera egin du: " + menu);
 					switch (menu) {
 					case 1:
 						System.out.println("************Erreserbak bistaratu************");
@@ -264,7 +264,8 @@ public class MainAgentzia {
 				} while (menu != 0);
 			} else if (bezero == true) {
 				System.out.println("Bezero menua:");
-				System.out.println("Ongi etorri " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
+				System.out
+						.println("Ongi etorri " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
 
 				do {
 					System.out.println("0- Irten");
@@ -272,6 +273,7 @@ public class MainAgentzia {
 					System.out.println("2- Zure telefono zenbakia aldatu");
 					System.out.println("3- Zure kontua ezabatu");
 					menu = sc.nextInt();
+					LOGGER.log(Level.FINE, "Bezeroak menuan hurrengo aukera egin du: " + menu);
 					switch (menu) {
 					case 1:
 						System.out.println("************Erreserba bat gehitu************");
@@ -293,11 +295,11 @@ public class MainAgentzia {
 							telf = sc.next();
 						}
 						b.get(bezerokont).setTfno(telf);
-						bezeroaldaketak=true;
+						bezeroaldaketak = true;
 						break;
 					case 3:
 						System.out.println("ADI! AKZIO HAU EZIN DA DESEGIN");
-						System.out.println("Ziur zaude zure kontua ezabatu nahi duzula? (BAI/EZ)");
+						System.out.println("Zihur zaude zure kontua ezabatu nahi duzula? (BAI/EZ)");
 						erabilezabatu = sc.next();
 						while (!erabilezabatu.equalsIgnoreCase("ez") && !erabilezabatu.equalsIgnoreCase("bai")) {
 							System.out.println("ERROR! BAI edo EZ bakarrik!");
@@ -305,10 +307,10 @@ public class MainAgentzia {
 						}
 						if (erabilezabatu.equalsIgnoreCase("bai")) {
 							b.remove(bezerokont);
-							bezeroaldaketak=true;
-							pertsonaldaketak=true;
+							bezeroaldaketak = true;
+							pertsonaldaketak = true;
 							System.out.println("Agur");
-							menu=0;
+							menu = 0;
 						}
 						break;
 					}

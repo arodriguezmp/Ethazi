@@ -9,10 +9,10 @@ public class Formato extends Formatter {
 	 * @param record 
 	 */
 	@Override
-	public String format(LogRecord record) {
-		// TODO Auto-generated method stub
-		return "<Mezua>" + record.getMessage() + "</Mezua>\n" + "<Maila>" + record.getLevel() + "</Maila>\n"
-				+ "<Klasea>" + record.getSourceClassName() + "</Klasea>";
-	}
+		public String format(LogRecord record) {
+			// TODO Auto-generated method stub
+			return "<Mezua>" + record.getMessage() + "</Mezua>\n" + "<Maila>" + record.getLevel() + "</Maila>\n"
+					+ "<Klasea>" + record.getSourceClassName() + "</Klasea>";
+		}
 
 }
