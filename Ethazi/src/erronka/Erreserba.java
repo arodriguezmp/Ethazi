@@ -3,6 +3,7 @@ package erronka;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Erreserba implements Bez {
@@ -150,9 +151,19 @@ public class Erreserba implements Bez {
 	 * @param teclado eskaner bidez
 	 */
 	public void irakurri(Scanner teclado) {
+		
+		boolean prezioa=false;
+		while (!prezioa) {
+		    try {
+		        System.out.println("Sartu Prezioa:");
+		        this.prezioa = teclado.nextInt();
+		        prezioa = true;
+		    } catch (InputMismatchException ime) {
+		        System.out.println("ERROR! Prezioa zenbaki bat izan behar da.");
+		        teclado.next(); // limpia el buffer de entrada
+		    }
+		}
 
-		System.out.println("Sartu Prezioa:");
-		this.prezioa = teclado.nextInt();
 		System.out.println("Sartu NAN:");
 		this.nan = teclado.next();
 		System.out.println("Sartu Erreserbatu nahi duzun ostatuaren kodea:");

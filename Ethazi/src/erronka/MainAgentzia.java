@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -41,7 +42,7 @@ public class MainAgentzia {
 		String dni;
 		boolean encontrado = false;
 		int kont = 0, bezerokont = 0, langilekont = 0;
-		String erabilsortu;
+		String erabilsortu, erabilezabatu;
 
 		// scanner
 		Scanner sc = new Scanner(System.in);
@@ -189,7 +190,7 @@ public class MainAgentzia {
 					LOGGER.log(Level.FINE, "Bezero berri bat erregistratu da du: " + b1);
 					b.add(b1);
 					bezeroaldaketak = true;
-					pertsonaldaketak = true;
+					pertsonaldaketak=true;
 				}
 			}
 
@@ -205,7 +206,6 @@ public class MainAgentzia {
 					System.out.println("5- Kruzeroak bistaratu");
 					System.out.println("6- Apartamantuak bistaratu");
 					System.out.println("7- Hotelak bistaratu");
-					System.out.println("9- Erreserba bat ezabatu");
 					System.out.println("0- Irten");
 					menu = sc.nextInt();
 					LOGGER.log(Level.FINE, "Bezeroak menuan hurrengo aukera egin du: " + menu);
@@ -259,10 +259,6 @@ public class MainAgentzia {
 							System.out.println("***************************");
 						}
 						break;
-					case 8:
-						System.out.println("************Erreserba bat ezabatu************");
-
-						break;
 					}
 
 				} while (menu != 0);
@@ -274,6 +270,7 @@ public class MainAgentzia {
 					System.out.println("0- Irten");
 					System.out.println("1- Erreserba bat gehitu");
 					System.out.println("2- Zure telefono zenbakia aldatu");
+					System.out.println("3- Zure kontua ezabatu");
 					menu = sc.nextInt();
 					switch (menu) {
 					case 1:
@@ -298,11 +295,26 @@ public class MainAgentzia {
 						b.get(bezerokont).setTfno(telf);
 						bezeroaldaketak=true;
 						break;
+					case 3:
+						System.out.println("ADI! AKZIO HAU EZIN DA DESEGIN");
+						System.out.println("Ziur zaude zure kontua ezabatu nahi duzula? (BAI/EZ)");
+						erabilezabatu = sc.next();
+						while (!erabilezabatu.equalsIgnoreCase("ez") && !erabilezabatu.equalsIgnoreCase("bai")) {
+							System.out.println("ERROR! BAI edo EZ bakarrik!");
+							erabilezabatu = sc.next();
+						}
+						if (erabilezabatu.equalsIgnoreCase("bai")) {
+							b.remove(bezerokont);
+							bezeroaldaketak=true;
+							pertsonaldaketak=true;
+							System.out.println("Agur");
+							menu=0;
+						}
+						break;
 					}
 				} while (menu != 0);
 
 			}
-
 			// Programatik datu basera pasatu datuak
 			try {
 				String consulta = "";
