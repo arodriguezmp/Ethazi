@@ -36,7 +36,7 @@ public class MainAgentzia {
 		String telf;
 		boolean erreserbaldaketak = false;
 		boolean bezeroaldaketak = false;
-		boolean pertsonaldaketak = false;
+
 		boolean admin = false;
 		boolean bezero = true;
 		String dni;
@@ -190,7 +190,7 @@ public class MainAgentzia {
 					LOGGER.log(Level.FINE, "Bezero berri bat erregistratu da du: " + b1);
 					b.add(b1);
 					bezeroaldaketak = true;
-					pertsonaldaketak = true;
+
 				}
 			}
 
@@ -308,7 +308,7 @@ public class MainAgentzia {
 						if (erabilezabatu.equalsIgnoreCase("bai")) {
 							b.remove(bezerokont);
 							bezeroaldaketak = true;
-							pertsonaldaketak = true;
+
 							System.out.println("Agur");
 							menu = 0;
 						}
