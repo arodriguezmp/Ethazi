@@ -32,7 +32,7 @@ public class MainAgentzia {
 		ArrayList<Ostatuak> o = new ArrayList<Ostatuak>();
 		ArrayList<Kruzeroak> k = new ArrayList<Kruzeroak>();
 		int menu;
-		int telf;
+		String telf;
 		boolean erreserbaldaketak = false;
 		boolean bezeroaldaketak = false;
 		boolean pertsonaldaketak = false;
@@ -268,13 +268,13 @@ public class MainAgentzia {
 				} while (menu != 0);
 			} else if (bezero == true) {
 				System.out.println("Bezero menua:");
-				System.out
-						.println("Ongi etorri " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
-				System.out.println("0- Irten");
-				System.out.println("1- Erreserba bat gehitu");
-				System.out.println("2- Zure telefono zenbakia aldatu");
-				menu = sc.nextInt();
+				System.out.println("Ongi etorri " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
+
 				do {
+					System.out.println("0- Irten");
+					System.out.println("1- Erreserba bat gehitu");
+					System.out.println("2- Zure telefono zenbakia aldatu");
+					menu = sc.nextInt();
 					switch (menu) {
 					case 1:
 						System.out.println("************Erreserba bat gehitu************");
@@ -286,9 +286,17 @@ public class MainAgentzia {
 						break;
 					case 2:
 						System.out.println("************Zure telefono zenbakia aldatu************");
-						System.out.println("Kaixo " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
+						System.out.println(
+								"Kaixo " + b.get(bezerokont).getIzena() + " " + b.get(bezerokont).getAbizena());
 						System.out.println("Sartu zure telefono zenbaki berria:");
-						telf=sc.nextInt();
+						telf = sc.next();
+						while (telf.length() != 9) {
+							System.out.println("ERROR! Telefono zenbakiak 9 digito izan behar ditu");
+							System.out.println("Sartu zure telefono zenbaki berria:");
+							telf = sc.next();
+						}
+						b.get(bezerokont).setTfno(telf);
+						bezeroaldaketak=true;
 						break;
 					}
 				} while (menu != 0);
